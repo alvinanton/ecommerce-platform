@@ -1,9 +1,5 @@
-﻿using EcommerceApp.Domain.Common;
-using EcommerceApp.Domain.Entities;
-using System;
-using System.Collections.Generic;
+﻿using ECommerceApp.Domain.Common;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace ECommerceApp.Domain.Entities
 {

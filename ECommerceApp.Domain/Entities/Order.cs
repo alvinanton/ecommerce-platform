@@ -1,12 +1,8 @@
-﻿using EcommerceApp.Domain.Common;
-using ECommerceApp.Domain.Entities;
-using System;
-using System.Collections.Generic;
+﻿using ECommerceApp.Domain.Common;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
-namespace EcommerceApp.Domain.Entities
+namespace ECommerceApp.Domain.Entities
 {
     public class Order : BaseEntity
     {
@@ -22,7 +18,7 @@ namespace EcommerceApp.Domain.Entities
         public string Status { get; set; } = "Pending";
 
         [MaxLength(100)]
-        public string PaymentIntentId { get; set; } = string.Empty;
+        public string? PaymentIntentId { get; set; }
 
         public DateTime? CompletedAt { get; set; }
 

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EcommerceApp.Domain.Common
+﻿namespace ECommerceApp.Domain.Common
 {
     /// <summary>
     /// Base entity with common properties for all entities

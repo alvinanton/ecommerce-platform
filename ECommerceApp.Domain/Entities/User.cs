@@ -1,5 +1,4 @@
-using EcommerceApp.Domain.Common;
-using EcommerceApp.Domain.Entities;
+using ECommerceApp.Domain.Common;
 using System.ComponentModel.DataAnnotations;
 
 namespace ECommerceApp.Domain.Entities

@@ -1,10 +1,7 @@
-﻿using EcommerceApp.Domain.Common;
-using System;
-using System.Collections.Generic;
+﻿using ECommerceApp.Domain.Common;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
-namespace EcommerceApp.Domain.Entities
+namespace ECommerceApp.Domain.Entities
 {
     public class OrderItem : BaseEntity
     {
