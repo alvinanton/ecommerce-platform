@@ -14,32 +14,32 @@ namespace ECommerceApp.Domain.Interfaces
         /// Get a single entity by ID
         /// </summary>
         Task<T?> GetByIdAsync(int id);
-
+        
         /// <summary>
         /// Get all entities
         /// </summary>
         Task<IEnumerable<T>> GetAllAsync();
-
+        
         /// <summary>
         /// Find entities matching a predicate (filter)
         /// </summary>
         Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate);
-
+        
         /// <summary>
         /// Add a new entity
         /// </summary>
         Task<T> AddAsync(T entity);
-
+        
         /// <summary>
         /// Update an existing entity
         /// </summary>
         Task UpdateAsync(T entity);
-
+        
         /// <summary>
         /// Delete an entity
         /// </summary>
         Task DeleteAsync(T entity);
-
+        
         /// <summary>
         /// Commit all changes to the database
         /// </summary>
