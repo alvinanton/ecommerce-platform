@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace EcommerceApp.Domain.Interfaces
+namespace ECommerceApp.Domain.Interfaces
 {
     public interface IProductRepository : IRepository<Product>
     {
