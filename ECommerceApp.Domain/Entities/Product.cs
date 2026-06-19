@@ -32,7 +32,7 @@ namespace ECommerceApp.Domain.Entities
         public bool IsActive { get; set; } = true;
 
         // Navigation properties
-        public virtual Category Category { get; set; } = null!;
+        public virtual Category? Category { get; set; } //= null!;
         public virtual ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
 
 

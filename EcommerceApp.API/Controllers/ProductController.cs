@@ -73,13 +73,56 @@ namespace ECommerceApp.API.Controllers
         /// <param name="categoryId">The unique identifier of the category for which to retrieve products. Must be a valid category ID.</param>
         /// <returns>An <see cref="IActionResult"/> containing the list of products in the specified category. Returns <seelangword="NotFound"/> if no products are found.</returns>
         [HttpGet("category/{categoryId:int}")]
-        public async Task<IActionResult> GetByCategory (int categoryId)
+        public async Task<IActionResult> GetByCategory(int categoryId)
         {
             var products = await _productRepository.GetByCategoryAsync(categoryId);
             if (products == null || !products.Any())
                 return NotFound();
             return Ok(products);
-        }       
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create([FromBody] Product product)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            product.CreatedAt = DateTime.UtcNow;
+
+            var createdProduct = await _productRepository.AddAsync(product);
+            await _productRepository.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(GetById), new { id = createdProduct.Id }, createdProduct);
+        }
+
+        [HttpPut("{id:int}")]
+        public async Task<IActionResult> Update(int id, [FromBody] Product product)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var existingProduct = await _productRepository.GetByIdAsync(id);
+            if (existingProduct == null)
+                return NotFound(new { message = $"Product with ID {id} not found" });
+
+            existingProduct.Name = product.Name;
+            existingProduct.Description = product.Description;
+            existingProduct.ShortDescription = product.ShortDescription;
+            existingProduct.Price = product.Price;
+            existingProduct.CategoryId = product.CategoryId;
+            existingProduct.IsDigital = product.IsDigital;
+            existingProduct.FileUrl = product.FileUrl;
+            existingProduct.FileSize = product.FileSize;
+            existingProduct.ThumbnailUrl = product.ThumbnailUrl;
+            existingProduct.IsActive = product.IsActive;
+            existingProduct.UpdatedAt = DateTime.UtcNow;
+
+            await _productRepository.UpdateAsync(existingProduct);
+            await _productRepository.SaveChangesAsync();
+
+            return Ok(existingProduct);
+
+        }
 
 
 
